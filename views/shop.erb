@@ -26,12 +26,18 @@
 <body>
 
   <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-<div class="navbar-brand bg-light">
-    Drinkist <i class="fas fa-coffee"></i>
-    </div>
-  </a>
-</nav>
+		<a class="navbar-brand" href="#">
+			<div class="navbar-brand bg-light">
+                <a href="/">Drinkist<i class="fas fa-coffee"></i></a> 
+                <% if @current_user%>
+                <a href="/logout" class="btn btn-danger">Logout</a>
+                <%else %>
+                <a href="/logins/new" class="btn btn-danger">Sign In</a>
+                <%end%>
+			</div>
+             
+		</a>
+	</nav>
 
 
 <div class="row">
@@ -58,12 +64,24 @@
     <div class="col-sm-3">
         <h3>Where?</h3>
         <p><%= @shop[:address] %></p>
+           <p><%= @shop[:city] %>, <%= @shop[:state] %></p>
+           
+ <div class="container mt-5">
+      <iframe
+        width="300"
+        height="100"
+        frameborder="1" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+          &q=<%= @lat_long %>&zoom=12" allowfullscreen>
+      </iframe>
+    </div>
+
         <h3>How many people have been here?</h3>
         <p><%= @going_count %></p>
         <h3>What are people saying about it?</h3>
-        <p>Google Rating:<%= @shop[:google_stars] %></p>
-        <p>Yelp Rating:<%= @shop[:yelp_stars] %></p>
-        <p>Our Users Rating:<%= @review_avg %></p>
+        <p>Google Rating: <%= @shop[:google_stars] %></p>
+        <p>Yelp Rating: <%= @shop[:yelp_stars] %></p>
+        <p>Our Users Rating: <%= @review_avg %></p>
 
     </div>
 </div>

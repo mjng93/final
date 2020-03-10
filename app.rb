@@ -42,6 +42,12 @@ get "/shops/:id" do
     @going_count = attend_table.where(shop_id: @shop[:id], attend: true).count
     @review_avg = attend_table.where(shop_id: @shop[:id], attend: true).avg(:rating)
    
+    results = Geocoder.search(@shop[:address])
+    @lat_long = results.first.coordinates # => [lat, long]
+    puts @lat_long
+    puts "lat long above"
+    #@lat_long = "#{@lat},#{@long}"
+    #"#{lat_long[0]} #{lat_long[1]}"
 
     view "shop"
 end
@@ -102,8 +108,6 @@ post "/logins/create" do
         #know user is logged in, but encrypt it so it's not a cookie
         #session and cookie arrays are automatically stored here through sinatra 
         session["user_id"] = @user[:id]
-        
-
         view "create_login"
     else 
         view "create_login_failed"
