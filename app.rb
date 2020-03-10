@@ -61,7 +61,7 @@ get "/shops/:id/attend/create" do
     
     attend_table.insert(
     shop_id: @shop[:id],
-    user_id: cookies["user_id"],
+    user_id: session["user_id"],
     rating: params["rating"],
     comments: params["comments"],
     attend: params["attend"]
