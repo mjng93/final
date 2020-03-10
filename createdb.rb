@@ -5,31 +5,63 @@ DB = Sequel.connect(connection_string)                                          
 #######################################################################################
 
 # Database schema - this should reflect your domain model
-DB.create_table! :events do
+DB.create_table! :shops do
   primary_key :id
-  String :title
-  String :description, text: true
-  String :date
-  String :location
-end
-DB.create_table! :rsvps do
-  primary_key :id
-  foreign_key :event_id
-  Boolean :going
   String :name
-  String :email
+  String :address
+  String :city
+  String :state
+  String :country
+  String :url, text: true
+  Boolean :coffee
+  Boolean :tea
+  Boolean :smoothies
+  String :seating
+  String :google_stars
+  String :yelp_stars
+end
+DB.create_table! :attend do
+  primary_key :id
+  foreign_key :shop_id
+  foreign_ket :user_id
+  Boolean :attend
+  Integer :rating
   String :comments, text: true
 end
+DB.create_table! :users do
+   primary_key :id
+   String :name
+   String :email
+   String :password
+ end
 
 # Insert initial (seed) data
-events_table = DB.from(:events)
+shops_table = DB.from(:shops)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
-                    date: "June 21",
-                    location: "Kellogg Global Hub")
+shops_table.insert(name: "Collectivo", 
+                    address: "716 Church Street",
+                    city: "Evanston",
+                    state: "IL",
+                    country: "USA",
+                    url: "https://colectivocoffee.com/", 
+                    coffee: true, 
+                    tea: true,
+                    smoothies: true,
+                    seating: "large",
+                    google_stars: "4.5",
+                    yelp_stars: "4")
 
-events_table.insert(title: "Kaleapolooza", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+shops_table.insert(name: "Backlot", 
+                    address: "1549 W Sherman Avenue",
+                    city: "Evanston",
+                    state: "IL",
+                    country: "USA",
+                    url: "http://backlotcoffee.com", 
+                    coffee: true, 
+                    tea: true,
+                    smoothies: false,
+                    seating: "small",
+                    google_stars: "4.6",
+                    yelp_stars: "5")
+
+puts "database created"

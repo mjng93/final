@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Google Fonts -->
+	<!-- Swap out "Roboto" for the font(s) you want to use -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway|Spartan&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" crossorigin="anonymous">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<!-- Your own CSS -->
+	<link rel="stylesheet" href="/styles.css">
+
+	<title>Drinkist</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+<div class="navbar-brand bg-light">
+    Drinkist <i class="fas fa-coffee"></i>
+    </div>
+  </a>
+</nav>
+
+
+<div class="row">
+    <div class="col-sm-9">
+        <h1><%= @shop[:name] %></h1>
+        <p><%= @shop[:address] %></p>
+        <h2>What people are saying about <%= @shop[:name] %>  </h2>
+        <% for went in @attend %>
+            <div class="media">
+                <% if went[:attend] %>
+                    <i class="fas fa-users"></i>
+                <% end %>
+                <div class="media-body">
+                    <h5 class="mt-0"> <%= @users_table.where(id: rsvp[:user_id]).to_a[0][:name] %></h5>
+                    <%= went[:rating] %>
+                    <%= went[:comments] %>
+                </div>
+            </div>
+        <% end %>
+        <p class="mt-5">
+            <a href="/shops/<%= @shop[:id] %>/attend/new" class="btn btn-primary">Review this shop</a>
+        </p>
+    </div>
+    <div class="col-sm-3">
+        <h3>Where?</h3>
+        <p><%= @shop[:address] %></p>
+        <h3>How many people have been here?</h3>
+        <p><%= @going_count %></p>
+        <h3>What are people saying about it?</h3>
+        <p>Google Rating:<%= @shop[:google_stars] %></p>
+        <p>Yelp Rating:<%= @shop[:yelp_stars] %></p>
+        <p>Our Users Rating:<%= @review_avg %></p>
+
+    </div>
+</div>
+
+
+
+	<footer class="page-footer font-small text-center">
+		<a href="/"> View all Shops</a>
+	</footer>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+	</script>
+</body>
+
+</html>

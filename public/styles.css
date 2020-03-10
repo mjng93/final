@@ -1,0 +1,24 @@
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    font-family: Spartan, Raleway;
+}
+
+
+.navbar .navbar-light {
+padding-top: 0rem;
+padding-right: 0rem;
+padding-bottom: 0.5rem;
+padding-left: 0rem;
+width: 100%;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right:0px;
+    padding-left: 0
+    px;
+    margin-right: auto;
+    margin-left: auto;
+}
