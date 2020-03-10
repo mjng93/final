@@ -37,7 +37,7 @@ get "/shops/:id" do
 
     @shop = shops_table.where(id: params[:id]).to_a[0]
     pp @shop
-    #@users_table = users_table 
+    @users_table = users_table 
     @attend = attend_table.where(shop_id: @shop[:id]).to_a
     @going_count = attend_table.where(shop_id: @shop[:id], attend: true).count
     @review_avg = attend_table.where(shop_id: @shop[:id], attend: true).avg(:rating)
@@ -56,6 +56,7 @@ end
 get "/shops/:id/attend/create" do
     puts "params: #{params}"
 
+    @users_table = users_table 
     @shop = shops_table.where(id: params[:id]).to_a[0]
     
     attend_table.insert(
@@ -101,6 +102,7 @@ post "/logins/create" do
         #know user is logged in, but encrypt it so it's not a cookie
         #session and cookie arrays are automatically stored here through sinatra 
         session["user_id"] = @user[:id]
+        
 
         view "create_login"
     else 

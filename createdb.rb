@@ -23,7 +23,7 @@ end
 DB.create_table! :attend do
   primary_key :id
   foreign_key :shop_id
-  foreign_ket :user_id
+  foreign_key :user_id
   Boolean :attend
   Integer :rating
   String :comments, text: true
