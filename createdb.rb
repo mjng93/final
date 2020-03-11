@@ -52,7 +52,7 @@ shops_table.insert(name: "Collectivo",
                     yelp_stars: "4")
 
 shops_table.insert(name: "Backlot", 
-                    address: "1549 W Sherman Avenue",
+                    address: "1549 Sherman Avenue",
                     city: "Evanston",
                     state: "IL",
                     country: "USA",
