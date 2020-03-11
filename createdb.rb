@@ -64,4 +64,17 @@ shops_table.insert(name: "Backlot",
                     google_stars: "4.6",
                     yelp_stars: "5")
 
+shops_table.insert(name: "Cupitol Coffee", 
+                    address: "812 Grove Street",
+                    city: "Evanston",
+                    state: "IL",
+                    country: "USA",
+                    url: "https://cupitol.com/", 
+                    coffee: true, 
+                    tea: true,
+                    smoothies: true,
+                    seating: "medium",
+                    google_stars: "4.5",
+                    yelp_stars: "4")
+
 puts "database created"

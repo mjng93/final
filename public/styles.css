@@ -3,6 +3,7 @@ h1 {
     font-size: 50px;
     text-align: center;
     font-family: Spartan, Raleway;
+    color: blue;
 }
 
 
@@ -14,11 +15,23 @@ padding-left: 0rem;
 width: 100%;
 }
 
+.mt-5, .my-5 {
+margin-top: 0px;
+}
+
 .container-fluid {
     width: 100%;
     padding-right:0px;
-    padding-left: 0
-    px;
+    padding-left: 0px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.container {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 2000px;
 }
