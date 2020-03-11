@@ -8,12 +8,13 @@
             <div class="media">
                 <% if went[:attend] %>
                     <i class="fas fa-users"></i>
-                <% end %>
+              
                 <div class="media-body">
                     <h5 class="mt-0"><%= @users_table.where(id: went[:user_id]).to_a[0][:name] %></h5>
                     <%= went[:rating] %>
                     <%= went[:comments] %>
                 </div>
+                  <% end %>
             </div>
         <% end %>
         <p class="mt-5">
@@ -27,9 +28,9 @@
            
  <div class="container mt-5">
       <iframe
-        width="250"
-        height="200"
-        frameborder="1" style="border:0"
+        width="300"
+        height="250"
+        frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
           &q=<%= @lat_long %>&zoom=16" allowfullscreen>
       </iframe>
@@ -37,7 +38,7 @@
        	<a href="<%=@shop[:url] %>" target="_blank"><%=@shop[:url] %></a>
         <h3>How many people from Drinkist have been here?</h3>
         <p><%= @going_count %></p>
-        <h3>What are people saying about it?</h3>
+        <h3>Ratings</h3>
         <p>Google Rating: <%= @shop[:google_stars] %></p>
         <p>Yelp Rating: <%= @shop[:yelp_stars] %></p>
         <p>Our Users Rating: <%= @review_avg %></p>

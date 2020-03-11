@@ -42,10 +42,10 @@ get "/shops/:id" do
     @going_count = attend_table.where(shop_id: @shop[:id], attend: true).count
     @review_avg = attend_table.where(shop_id: @shop[:id], attend: true).avg(:rating)
    
-    puts 
+
     results = Geocoder.search("#{@shop[:address]},#{@shop[:city]} #{@shop[:state]}")
     lat_long_results = results.first.coordinates
-    @lat_long = "#{lat_long_results[0]},#{lat_long_results[1]}" # => [lat, long]
+    @lat_long = "#{lat_long_results[0]}, #{lat_long_results[1]}" # => [lat, long]
     puts @lat_long
     puts "lat long above"
     #@lat_long = "#{@lat},#{@long}"
@@ -58,7 +58,13 @@ get "/shops/:id/attend/new" do
     puts "params: #{params}"
 
     @shop = shops_table.where(id: params[:id]).to_a[0]
+    @current_user = users_table.where(id: session["user_id"]).to_a[0]
+    
+    if @current_user
     view "new_attend"
+    else 
+    view "please_login"
+    end
 end
 
 get "/shops/:id/attend/create" do

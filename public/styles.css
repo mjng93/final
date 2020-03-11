@@ -1,5 +1,5 @@
 
-h1 {
+h1, .h1 {
     font-size: 50px;
     text-align: center;
     font-family: Spartan, Raleway;
@@ -7,8 +7,16 @@ h1 {
 }
 
 
-.navbar .navbar-light {
-padding-top: 0rem;
+/* .navbar .navbar-light {
+padding-top: 0.2rem;
+padding-right: 0rem;
+padding-bottom: 0.5rem;
+padding-left: 0rem;
+width: 100%;
+} */
+
+.navbar, .navbar-light {
+padding-top: 0.2rem;
 padding-right: 0rem;
 padding-bottom: 0.5rem;
 padding-left: 0rem;
@@ -19,6 +27,14 @@ width: 100%;
 margin-top: 0px;
 }
 
+.mr-auto, .mx-auto {
+    margin-left: 15px;
+}
+
+.ml-auto, .mx-auto {
+    margin-right: 15px;
+}
+
 .container-fluid {
     width: 100%;
     padding-right:0px;
@@ -27,11 +43,36 @@ margin-top: 0px;
     margin-left: auto;
 }
 
-.container {
+.container, .mt-5 {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: px;
+    margin-right: 5px;
+    margin-left: 5px;
+    max-width: 2000px;
+}
+
+.container .mt-5 {
     width: 100%;
     padding-right: 0px;
     padding-left: 0px;
     margin-right: auto;
     margin-left: auto;
     max-width: 2000px;
+}
+
+footer{
+    background-color: grey;
+    position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+}
+
+
+body {
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  padding-bottom: 25px; 
 }
