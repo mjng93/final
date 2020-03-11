@@ -9,7 +9,7 @@
 			<i class="fas fa-users"></i>
 			<div class="media-body">
 				<h5 class="mt-0"><%= @users_table.where(id: went[:user_id]).to_a[0][:name] %></h5>
-				<%= went[:rating] %>
+				<%= went[:rating] %>/5 Stars
 				<%= went[:comments] %>
 			</div>
             <%else%>
