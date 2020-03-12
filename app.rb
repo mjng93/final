@@ -84,6 +84,41 @@ get "/shops/:id/attend/create" do
     view "create_attend"
 end
 
+get "/attend/:id/edit" do
+    puts "params: #{params}"
+
+    @attend = attend_table.where(id: params["id"]).to_a[0]
+    @shop = shops_table.where(id: @attend[:shop_id]).to_a[0]
+    
+    view "edit_attend"
+end
+
+post "/attend/:id/update" do
+    puts "params: #{params}"
+  
+    @attend = attend_table.where(id: params["id"]).to_a[0] #remember, this route is stateless, so we only know the id of the rsvp
+    @shop = shops_table.where(id: @attend[:shop_id]).to_a[0]
+    if @current_user && @current_user[:id]==@attend[:user_id]
+    attend_table.where(id: params["id"]).update(
+        rating: params["rating"],
+        comments: params["comments"],
+        attend: params["attend"])
+    end
+
+    view "update_attend"
+end
+
+get "/attend/:id/destroy" do
+    puts "params: #{params}"
+
+    
+    @attend = attend_table.where(id: params["id"]).to_a[0]
+    @shop = shops_table.where(id: @attend[:shop_id]).to_a[0]
+    attend_table.where(id: params["id"]).delete
+
+    view "destroy_attend"
+end
+
 get "/users/new" do
     view "new_user"
 end
@@ -91,6 +126,10 @@ end
 post "/users/create" do
     puts "params: #{params}"
 
+existing_user = users_table.where(email: params["email"]).to_a[0]
+if existing_user
+    view "error"
+else
     @users = users_table.where(id: params[:id]).to_a[0]
     
     users_table.insert(
@@ -100,6 +139,7 @@ post "/users/create" do
     )
 
     view "create_user"
+end
 end
 
 get "/logins/new" do

@@ -8,9 +8,15 @@
 			<% if went[:attend] %>
 			<i class="fas fa-users"></i>
 			<div class="media-body">
-				<h5 class="mt-0"><%= @users_table.where(id: went[:user_id]).to_a[0][:name] %></h5>
+                <h5 class="mt-0"><%= @users_table.where(id: went[:user_id]).to_a[0][:name] %></h5>
 				<%= went[:rating] %>/5 Stars
 				<%= went[:comments] %>
+                 <small>
+                        <!-- only allow editng of your own rsvp if you are logged in -->
+                        <%if @current_user && @current_user[:id] == went[:user_id] %> 
+                            (<a href="/attend/<%= went[:id] %>/edit">edit</a> | <a href="/attend/<%= went[:id] %>/destroy">delete</a>)
+                        <%end%>
+                        </small>
 			</div>
             <%else%>
             <p>No one has been here yet!</p>
