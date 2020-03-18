@@ -153,8 +153,6 @@ post "/logins/create" do
     @user = users_table.where(email: params["email"]).to_a[0]
     if @user && BCrypt::Password.new(@user[:password])==params["password"]
 
-        #know user is logged in, but encrypt it so it's not a cookie
-        #session and cookie arrays are automatically stored here through sinatra 
         session["user_id"] = @user[:id]
         view "create_login"
     else 

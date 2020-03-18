@@ -2,7 +2,7 @@
 h1, .h1 {
     font-size: 50px;
     font-family: Spartan, Raleway;
-    color: blue;
+    color: #873600;
 }
 
 
@@ -61,7 +61,7 @@ margin-top: 0px;
 }
 
 footer{
-    background-color: grey;
+    background-color:#F2F3F4;
     position: absolute;
   bottom: 0;
   width: 100%;
